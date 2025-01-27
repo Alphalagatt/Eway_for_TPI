@@ -28,7 +28,7 @@ app.http('geteWayPaymentURL', {
             });
             
 
-            const data = response.json();
+            const data = await response.json();
             console.log(data);
             return { body: data };
 
