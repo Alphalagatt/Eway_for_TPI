@@ -29,8 +29,8 @@ app.http('geteWayPaymentURL', {
             
 
             const data = await response.json();
-            console.log(data.json());
-            return data.json();
+            console.log(JSON.stringify(data));
+            return JSON.stringify(data);
 
         } catch (err) { 
             console.log(err);
