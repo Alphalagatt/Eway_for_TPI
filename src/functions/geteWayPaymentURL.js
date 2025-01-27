@@ -9,32 +9,33 @@ app.http('geteWayPaymentURL', {
     handler: async (request, context) => {
         context.log(`Http function processed request for url "${request.url}"`);
 
-        //const name = request.query.get('name') || await request.text() || 'world';
-
-        fetch('https://api.ewaypayments.com/AccessCodesShared', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + Buffer.from(apiKey + ':' + password).toString('base64'),
-            },
-            body: JSON.stringify({
-                "Payment": {
-                    "TotalAmount": 100
+        try {
+            //const name = request.query.get('name') || await request.text() || 'world';
+            const response = await fetch('https://api.ewaypayments.com/AccessCodesShared', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + Buffer.from(apiKey + ':' + password).toString('base64'),
                 },
-                "RedirectUrl": "http://www.eway.com.au",
-                "CancelUrl": "http://www.eway.com.au",
-                "TransactionType": "Purchase"
-            })
-        }).then(response => {
-            response.json().then(data => {
-                console.log(data);
-                return { body: data };
+                body: JSON.stringify({
+                    "Payment": {
+                        "TotalAmount": 100
+                    },
+                    "RedirectUrl": "http://www.eway.com.au",
+                    "CancelUrl": "http://www.eway.com.au",
+                    "TransactionType": "Purchase"
+                })
             });
-        }).catch(err => {
+            
+
+            const data = response.json();
+            console.log(data);
+            return { body: data };
+
+        } catch (err) { 
             console.log(err);
             return { body: err };
-        });
+        };
 
-        //return { body: `Hello, ${name}!` };
     }
 });
