@@ -9,7 +9,7 @@ app.http('geteWayPaymentURL', {
     handler: async (request, context) => {
         context.log(`Http function processed request for url "${request.url}"`);
 
-        const name = request.query.get('name') || await request.text() || 'world';
+        //const name = request.query.get('name') || await request.text() || 'world';
 
         fetch('https://api.ewaypayments.com/AccessCodesShared', {
             method: 'POST',
@@ -35,6 +35,6 @@ app.http('geteWayPaymentURL', {
             return { body: err };
         });
 
-        return { body: `Hello, ${name}!` };
+        //return { body: `Hello, ${name}!` };
     }
 });
