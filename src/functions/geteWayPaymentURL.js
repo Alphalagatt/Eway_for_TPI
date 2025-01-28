@@ -32,7 +32,7 @@ app.http('geteWayPaymentURL', {
             context.log(JSON.stringify(data));
             return {
                 status: 200,
-                body: JSON.stringify(data)
+                body: data
             };
 
         } catch (err) { 
