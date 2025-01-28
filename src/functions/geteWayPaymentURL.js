@@ -43,13 +43,16 @@ app.http('geteWayPaymentURL', {
             };
             //return { body: err };
         };
-*/
+
         return {
             status: 200,
             body: "Hello World"
         };
-        
-        
+*/
+        context.res = {
+            status: 200,
+            body: "Hello World for context res"
+        };
 
     }
 });
