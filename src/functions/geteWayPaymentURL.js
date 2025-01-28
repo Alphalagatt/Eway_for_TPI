@@ -30,19 +30,21 @@ app.http('geteWayPaymentURL', {
 
             const data = await response.json();
             console.log(JSON.stringify(data));
-            context.res = {
+            $return = {
                 status: 200,
                 body: JSON.stringify(data)
             };
-            return JSON.stringify(data);
+            //return JSON.stringify(data);
 
         } catch (err) { 
-            context.res = {
+            $return = {
                 status: 500,
                 body: err  
             };
-            return { body: err };
+            //return { body: err };
         };
+
+        
         
 
     }
