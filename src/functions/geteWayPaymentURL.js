@@ -30,16 +30,17 @@ app.http('geteWayPaymentURL', {
 
             const data = await response.json();
             console.log(JSON.stringify(data));
-            request.res.setHeader('Content-Type', 'application/json');
-            request.res.status = 200;
-            request.res.body = JSON.stringify(data);
+            context.res = {
+                status: 200,
+                body: JSON.stringify(data)
+            };
             return JSON.stringify(data);
 
         } catch (err) { 
-            console.log(err);
-            request.res.setHeader('Content-Type', 'application/json');
-            request.res.status = 500;
-            request.res.body = JSON.stringify(err);
+            context.res = {
+                status: 500,
+                body: err  
+            };
             return { body: err };
         };
         
