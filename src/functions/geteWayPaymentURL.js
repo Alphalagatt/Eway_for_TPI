@@ -13,6 +13,7 @@ app.http('geteWayPaymentURL', {
             //const name = request.query.get('name') || await request.text() || 'world';
             const response = await fetch('https://api.ewaypayments.com/AccessCodesShared', {
                 method: 'POST',
+                mode: 'no-cors', // no-cors, *cors, same-origin
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Basic ' + Buffer.from(apiKey + ':' + password).toString('base64'),
