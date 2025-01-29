@@ -1,8 +1,8 @@
 const { app } = require('@azure/functions');
 const scriptjs = require('scriptjs');
 const rapidEndpoint = "https://api.sandbox.ewaypayments.com/AccessCodesShared";
-const apiKey = "C3AB9ATDmEkBXOCFsXK81q+RG1X35oXI2z87aTJbaSWgJ5A9+OpX69eOLAquri7Gmqzwts";
-const password = "mJeH9HVn";
+const apiKey = process.env.EWAY_API_KEY;
+const password = process.env.EWAY_PASSWORD;
 
 
 
