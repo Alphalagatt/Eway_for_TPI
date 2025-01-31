@@ -9,6 +9,7 @@
   "dependencies": {
     "@azure/functions": "^4.0.0",
     "dotenv": "^16.4.7",
+    "eway-rapid": "^1.2.1",
     "scriptjs": "^2.5.9"
   },
   "main": "src/{index.js,functions/*.js}"
